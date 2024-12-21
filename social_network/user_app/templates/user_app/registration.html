@@ -16,8 +16,15 @@
             <input type="password" placeholder="Пароль" name="password" required>
             <br>
             <br>
+            <input type="password" placeholder="Підтвердження пароля" name="password_confirm" required>
+            <br>
+            <br>
             <button>Надіслати</button>
         </form>
-        
+        {% if same_password == False %}
+            <p style="color: red;">Паролі не співподають</p>
+        {% elif same_user == True %}
+            <p style="color: red;">Такий користувач вже існує</p>
+        {% endif %}
     </body>
 </html>
