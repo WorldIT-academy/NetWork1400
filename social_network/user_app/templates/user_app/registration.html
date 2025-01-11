@@ -8,8 +8,9 @@
         <h1>
             Cторінка реєстрації
         </h1>
+        <!-- Створюємо форму з методом запиту POST -->
         <form method = "post">
-            {% csrf_token %}
+            {% csrf_token %} <!-- Токен, який підтверджує оригнальність форми та захищає сервер неоригінального запиту -->
             <input type="text" placeholder="Логін" name="username" required>
             <br>
             <br>
@@ -21,6 +22,7 @@
             <br>
             <button>Надіслати</button>
         </form>
+        <!-- Виводимо помилки, якщо вони є -->
         {% if same_password == False %}
             <p style="color: red;">Паролі не співподають</p>
         {% elif same_user == True %}
