@@ -1,0 +1,16 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Усі профілі</h1>
+    {% for profile in all_profiles %}
+        <h2>{{profile.user.username}}</h2>
+        <p><img src="{{profile.avatar.url}}" alt=""></p>
+        <p>{{profile.about_me}}</p>
+        <hr>
+    {% endfor %}
+</body>
+</html>
