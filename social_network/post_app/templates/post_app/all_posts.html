@@ -8,10 +8,13 @@
     <h1>Усі пости</h1>
     {% for post in all_posts%}
         <h2>{{ post }}</h2>
-        <h3>Усі теги:</h3>
+        <h3>Автор: {{ post.author.user.username }}</h3>
+        <h4>Усі теги:</h4>
         {% for tag in post.tags.all %}
            <span>#{{ tag }}</span>
         {% endfor %}
+        <p><img src="{{ post.image.url }}" alt="" style="width: 200px;"></p>
+        <p>{{ post.content }}</p>
         <hr>
     {% endfor %}
 </body>
