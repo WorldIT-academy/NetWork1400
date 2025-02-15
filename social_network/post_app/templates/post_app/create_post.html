@@ -8,24 +8,7 @@
     <h1>Створити пост</h1>
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="text" name="title" placeholder="Заголовок" maxlength="255" required >
-        <br>
-        <br>
-        <textarea name="content" id="" placeholder="Контент" required></textarea>
-        <br>
-        <br>
-        <input type="file" name = "image" required>
-        <br>
-        <br>
-        <label for="tags">Теги</label>
-        <br>
-        <select name="tags" multiple id="tags">
-            {% for tag in tags %}
-                <option value="{{ tag.id }}">{{ tag.name }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <br>
+        {{ form.as_p }}
         <button>Створити</button>
     </form>
 </body>
