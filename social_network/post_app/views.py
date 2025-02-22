@@ -21,15 +21,10 @@ def render_create_post(request):
         form = PostForm(request.POST, request.FILES)
         # Якщо надіслані дані є коректними (якщо пройшла валідація)
         if form.is_valid():
-            post = Post.objects.create(
-                title = form.cleaned_data.get('title'),
-                content = form.cleaned_data.get('content'),
-                image = form.cleaned_data.get('image'),
-                author = Profile.objects.get(user= request.user)
-            )
-            post.tags.set(form.cleaned_data.get('tags'))
-            post.save()
-
+            # Отримуємо автора на основі авторизованого користувача
+            author = Profile.objects.get(user = request.user)
+            # Збергаіємо форму БД
+            form.save(author)
             return redirect('all_posts')
     else:
         # Створюємо порожню форму для відображення на сторінці
