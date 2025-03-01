@@ -1,0 +1,16 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>all tags</title>
+    </head>
+    <body>
+        <h1>Усі активні теги</h1>
+        {% for tag in tags %}
+            <hr>
+            <h2>{{ tag.name }}</h2>
+            <img style="height:100px;" src="{{ tag.icon.url }}">
+            <p>{{ tag.description }}</p>
+        {% endfor %}
+    </body>
+</html>

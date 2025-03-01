@@ -1,5 +1,19 @@
 from django import forms
 from .models import Tag, Post
+from django.core.exceptions import ValidationError
+
+
+class TagForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = '__all__'
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if not name[0].isalpha():
+            raise ValidationError("Назва тегу повинна починатись з букви")
+        return name
+
 
 # Створюємо клас для форми, що пов'язана з моделлю
 class PostForm(forms.ModelForm):
